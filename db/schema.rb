@@ -13,14 +13,11 @@
 ActiveRecord::Schema.define(version: 20211019033618) do
 
   create_table "admins", force: :cascade do |t|
-    t.string   "email"
+    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string   "password"
-    t.datetime "create_at"
-    t.datetime "update_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -28,24 +25,21 @@ ActiveRecord::Schema.define(version: 20211019033618) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string   "email"
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string   "last_name"
-    t.string   "first_name"
-    t.string   "last_name_kana"
-    t.string   "first_name_kana"
-    t.string   "password"
-    t.string   "postcode"
-    t.text     "address"
-    t.string   "phone_number"
-    t.boolean  "is_deleted"
-    t.datetime "create_at"
-    t.datetime "update_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "last_name",                              null: false
+    t.string   "first_name",                             null: false
+    t.string   "last_name_kana",                         null: false
+    t.string   "first_name_kana",                        null: false
+    t.string   "postcode",                               null: false
+    t.text     "address",                                null: false
+    t.string   "phone_number",                           null: false
+    t.boolean  "is_deleted",             default: false, null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
