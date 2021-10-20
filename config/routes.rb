@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     patch "customers/withdraw" => "customers#withdraw"
   end
 
-　#管理者
+  #管理者
   namespace :admins do
     root to: "homes#top"
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
