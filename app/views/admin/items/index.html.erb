@@ -1,9 +1,15 @@
+<h1>商品一覧</h1>
 <% @items.each do |item| %>
-  <p>商品ID：<%= item.id %></p>
-  <p>商品名：<%= item.name %></p>
-  <p>ジャンル：<%= item.genre %></p>
-  <p>税抜価格：<%= item.price %></p>
-  <% if item.status == true %>
+  <p>商品ID</p>
+  <span><%= item.id %></span>
+  <p>商品名</p>
+  <span><%= item.name %></span>
+  <p>税抜価格</p>
+  <span><%= item.price %></span>
+  <p>ジャンル</p>
+  <span><%= item.genre.name %></span>
+  <p>ステータス</p>
+  <% if item.is_active == true %>
     <p class="text-success">販売中</p>
   <% else %>
     <p class="text-secondary">販売停止中</p>

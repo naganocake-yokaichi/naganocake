@@ -7,13 +7,13 @@
   <h4>商品説明</h4>
   <%= f.text_area :introduction %>
   <h4>ジャンル</h4>
-  <%= f.collection_select(:genre, @genres, :id, :name,{ prompt: "--選択してください--" }) %>
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name,{ prompt: "--選択してください--" }) %>
   <h4>税抜価格</h4>
   <%= f.text_field :price %>円
   <h4>販売ステータス</h4>
-  <%= f.radio_button :status, :true %>
-  <%= f.label :status, "販売中", value: true %>
-  <%= f.radio_button :status, :false %>
-  <%= f.label :status, "販売停止中", value: false %>
+  <%= f.radio_button :is_active, :true %>
+  <%= f.label :done, "販売中", value: true %>
+  <%= f.radio_button :is_active, :false %>
+  <%= f.label :done, "販売停止中", value: false %>
   <%= f.submit '新規登録', class: 'btn btn-success' %>
 <% end %>

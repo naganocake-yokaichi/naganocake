@@ -1,4 +1,8 @@
 class Admin::ItemsController < ApplicationController
+  def index
+    @items = Item.all
+  end
+
   def new
     @item = Item.new
   end
@@ -9,11 +13,8 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_items_path
   end
 
-  def index
-    @items = Item.all
-  end
-
   def show
+
   end
 
   def edit
@@ -24,6 +25,6 @@ class Admin::ItemsController < ApplicationController
 
 private
   def item_params
-    params.require(:item).permit(:image, :name, :introduction, :price, :is_active)
+    params.require(:item).permit(:image, :name, :introduction, :price, :is_active, :genre_id)
   end
 end
