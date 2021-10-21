@@ -1,6 +1,7 @@
 <% @items.each do |item| %>
   <p>商品ID：<%= item.id %></p>
   <p>商品名：<%= item.name %></p>
+  <p>ジャンル：<%= item.genre %></p>
   <p>税抜価格：<%= item.price %></p>
   <% if item.status == true %>
     <p class="text-success">販売中</p>
