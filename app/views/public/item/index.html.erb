@@ -1,0 +1,10 @@
+<h1>商品一覧</h1>
+
+<% @items.each do |item| %>
+  <p>商品名</p>
+    <%= link_to item_path(item.id) do %>
+      <span><%= item.name %></span>
+    <% end %>
+  <p>金額<p>
+    <span><%= item.price %></span>
+<% end %>
