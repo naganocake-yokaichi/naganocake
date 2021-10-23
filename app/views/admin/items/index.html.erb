@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row mt-4 mb-4">
-    <h1>商品一覧
+    <h2>商品一覧
       <%= link_to new_admin_item_path, class: "btn btn-info" do %>
         <i class="fas fa-plus"></i>
       <% end %>
-    </h1>
+    </h2>
   </div>
-  
+
   <table class="table table-striped">
-    
+
     <thead>
       <tr>
         <th>商品ID</th>
@@ -18,7 +18,7 @@
         <th>ステータス</th>
       </tr>
     </thead>
-    
+
     <tbodey>
       <% @items.each do |item| %>
         <tr>
