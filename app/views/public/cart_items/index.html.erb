@@ -4,6 +4,5 @@
 <% @cart_items.each do |cart_item| %>
   <p>商品名</p>
   <span><%= cart_item.item.name %></span>
-  <p></p>
-  <span><%= cart_item.item.name %></span>
+  <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <% end %>
