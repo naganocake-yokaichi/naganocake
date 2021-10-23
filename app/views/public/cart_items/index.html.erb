@@ -1,0 +1,9 @@
+<h1>カートの中身</h1>
+
+
+<% @cart_items.each do |cart_item| %>
+  <p>商品名</p>
+  <span><%= cart_item.item.name %></span>
+  <p></p>
+  <span><%= cart_item.item.name %></span>
+<% end %>
