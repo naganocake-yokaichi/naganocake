@@ -1,15 +1,16 @@
-<container>
+<div class="container">
     <div class="row justify-content-between ml-5">
         <div class="col-4">
             <h4>ショッピングカート</h4>
         </div>
-        <div class="col-4">
+        <div class="col-4 text-right mr-5">
             <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete,class: "btn btn-danger btn-sm" %>
         </div>
     </div>
 
     <div class="row ml-5">
-        <table class="table fixed ml-4">
+        <table class="table ml-4">
+          <thead class="thead-light">
            <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -17,6 +18,7 @@
             <th>小計</th>
             <th></th>
            </tr>
+          </thead>
              <% total = 0 %>
 
         <% if current_customer.cart_items.present? %>
@@ -25,7 +27,7 @@
 
 
 
-
+            <tbody>
              <tr>
                <td>
                  <%= attachment_image_tag(cart_item.item, :image, size: "60x50", fallback: "no_image.jpg") %>
@@ -49,23 +51,22 @@
                <% total += subtotal %>
                   <% end %>
         <% end %>
-
-           <tr>
-            <th>合計金額</th>
-            <td><%= total %></td>
-           </tr>
+        </tbody>
+        </table>
     </div>
 
-     <div class="row ml-5">
-        <%= link_to "買い物を続ける", items_path, method: :get,class: "btn btn-primary btn-sm" %>
-     </div>
-
-
-    <div class="row ml-5">
-        <%= link_to "情報入力に進む", new_order_path, method: :get,class: "btn btn-success btn-sm" %>
+    <div class="row justify-content-around">
+      <div class="col mt-2 ml-5 pl-5 ">
+      <%= link_to "買い物を続ける", items_path, method: :get,class: "btn btn-primary btn-sm" %>
+      </div>
+      <div class="col mr-5 pr-5 text-right">
+      <h5>合計金額<%= total %></h5>
+      </div>
     </div>
-
-</container>
+    <div class="row justify-content-center">
+      <%= link_to "情報入力に進む", new_order_path, method: :get,class: "btn btn-success btn-sm" %>
+    </div>
+</div>
 
 
 
