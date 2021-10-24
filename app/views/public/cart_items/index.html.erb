@@ -9,6 +9,9 @@
    </tr>
      <% total = 0 %>
 
+
+<%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete,class: "btn btn-danger btn-sm" %>
+
 <% if current_customer.cart_items.present? %>
 
     <% @cart_items.each do |cart_item| %>
@@ -44,5 +47,8 @@
     <th>合計金額</th>
     <td><%= total %></td>
    </tr>
+
+<%= link_to "買い物を続ける", items_path, method: :get,class: "btn btn-primary btn-sm" %>
+
 
 
