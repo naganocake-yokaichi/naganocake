@@ -31,8 +31,8 @@
 </td>
 <td class = "info col-md-1">
 
-<% if customer.is_deleted == true %>退会
-<% elsif customer.is_deleted == false %>有効
+<% if customer.is_deleted == true %><p class = 'text-secondary font-weight-bold'>退会</p>
+<% elsif customer.is_deleted == false %><p class = 'text-success font-weight-bold'>有効</p>
 <% end %>
 
 <% end %>
