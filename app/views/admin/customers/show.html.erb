@@ -1,0 +1,54 @@
+<%= flash[:success] %>
+<div class = 'container'>
+<div class = 'row'>
+  <div class = 'col-md-9'>
+
+<div class = 'field' >
+<%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
+<p>会員
+<%= @customer.id %>
+</p>
+</div>
+<div class = 'field' >
+  <p>氏名</p>
+<%= @customer.last_name %>
+<%= @customer.first_name %>
+</div>
+<div class = 'field' >
+  <p>フリガナ
+<%= @customer.last_name_kana %>
+<%= @customer.first_name_kana %>
+</p>
+</div>
+
+<div class = 'field' >
+  <p>郵便番号
+<%= @customer.postcode %></p>
+</div>
+
+<div class = 'field' >
+  <p>住所
+<%= @customer.address %></p>
+</div>
+
+<div class = 'field' >
+  <p>電話番号
+<%= @customer.phone_number %></p>
+</div>
+<div class = 'field' >
+  <p>メールアドレス
+<%= @customer.email %>
+</p>
+</div>
+<div class = 'field' >
+  <p>会員ステータス
+<% if @customer.is_deleted == true %>退会
+<% elsif @customer.is_deleted == false %>有効
+<% end %></p>
+</div>
+
+<%= link_to "編集する", edit_admin_customer_path(@customer), class: 'btn btn-success' %>
+<%= link_to "注文履歴一覧を見る", admin_order_path(@customer), class: 'btn btn-primary' %>
+</div>
+</div>
+</div>
