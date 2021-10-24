@@ -1,0 +1,19 @@
+<% @cart_items.each do |cart| %>
+  <%= cart.item.name %>
+  <%= (cart.item.price * 1.1).to_i %>
+  <%= cart.amount %>
+  <%= subtotal = ((cart.item.price*cart.amount)*1.1).to_i %>
+<% end %>
+
+
+
+
+<h4>支払方法</h4>
+<%= @order.pay_method %>
+
+<%= form_with model:@order, url: orders_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :postcode %>
+  <%= f.submit "注文を確定する" %>
+<% end %>
