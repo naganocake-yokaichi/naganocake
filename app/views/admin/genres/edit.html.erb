@@ -1,5 +1,21 @@
 <div class="mt-5">
 <div class="container px-5 px-sm-0">
+
+ <div class="row ml-2 text-danger">
+   <% if @genre.errors.any? %>
+    <%= @genre.errors.count %>件のエラーが発生しました。<br>
+    <% @genre.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+
+  <p id="notice">
+   <p><%= flash[:notice] %></p>
+  </p>
+ </div>
+
+
+
  <div class="row">
   <div class="col-md-8">
    <h3><strong>ジャンル編集</strong></h3>
