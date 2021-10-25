@@ -1,0 +1,17 @@
+<h2>注文履歴一覧</h2>
+
+<% @orders.each do |order| %>
+
+  <p>購入日時</p>
+  <%= link_to order.created_at, admin_order_path(order.id) %>
+
+  <p>購入者</p>
+  <%= order.name %>
+
+  <p>注文個数</p>
+  <%= order.order_details.sum(:amount) %>
+
+  <p>注文ステータス</p>
+  <%= order.status_i18n %>
+
+<% end %>
