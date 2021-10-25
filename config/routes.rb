@@ -10,8 +10,8 @@ Rails.application.routes.draw do
         post :confirm
       end
     end
-    resources :cart_items, only: [:index, :update, :destroy, :create]
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resource "customers", only: [:show, :edit, :update]
     get "customers/unsubscribe" => "customers#unsubscribe"
