@@ -1,0 +1,23 @@
+<h2>注文履歴</h2>
+
+<% @orders.each do |order| %>
+
+  <p>注文日</p>
+  <%= order.created_at.strftime('%Y/%m/%d') %>
+
+  <p>配送先</p>
+  <%= order.postcode %>
+  <%= order.address %>
+  <%= order.name %>
+
+  <p>注文商品</p>
+
+  <p>支払金額</p>
+  <%= order.total_payment %>
+
+  <p>ステータス</p>
+  <%= order.status_i18n %>
+
+  <p>注文詳細</p>
+
+<% end %>
