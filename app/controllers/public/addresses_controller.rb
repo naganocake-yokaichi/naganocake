@@ -9,7 +9,7 @@ class Public::AddressesController < ApplicationController
       @address = Address.new(address_params)
       @address.customer_id = current_customer.id
       if @address.save
-        redirect_to addresses_path
+        redirect_to addresses_path, notice: "successfully"
       else
         @addresses = Address.all
         render :index
@@ -23,7 +23,7 @@ class Public::AddressesController < ApplicationController
     def update
       @address = Address.find(params[:id])
       if @address.update(address_params)
-        redirect_to addresses_path
+        redirect_to addresses_path, notice: "successfully"
       else
         render :edit
       end
