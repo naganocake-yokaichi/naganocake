@@ -1,15 +1,4 @@
 Rails.application.routes.draw do
-  #認証機能
-  #会員
-  devise_for :customers,skip: [:password,], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-  }
-  #管理者
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-  }
-
   #会員
   scope module: :public do
     root to: "homes#top"
@@ -21,8 +10,8 @@ Rails.application.routes.draw do
       end
     end
     get "orders/thanks" => "orders#thanks"
-    resources :cart_items, only: [:index, :update, :destroy, :create]
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resource "customers", only: [:show, :edit, :update]
     get "customers/unsubscribe" => "customers#unsubscribe"
@@ -39,4 +28,14 @@ Rails.application.routes.draw do
       resources :order_details, only: [:update]
     end
   end
+  #認証機能
+  #会員
+  devise_for :customers,skip: [:password,], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+  }
+  #管理者
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+  }
 end

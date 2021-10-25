@@ -24,4 +24,19 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  before_action :customer_state, only: [:create]
+  protected
+  def customer_state
+    @customer = Customer.find_by(email: params[:customer][:email])
+     if @customer
+     if @customer.valid_password?(params[:customer][:password])&& (@customer.active_for_authentication? == false)
+        flash[:error] = "退会済みです。"
+        redirect_to new_customer_session_path
+     end
+     else
+      flash[:error] = "必須項目を入力してください。"
+    end
+
+  end
+
 end
