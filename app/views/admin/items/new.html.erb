@@ -1,5 +1,19 @@
 <div class="container">
 
+  <div class ="row my-2 text-danger">
+        <% if @item.errors.any? %>
+        <%= @item.errors.count %>件のエラーが発生しました。<br>
+                <% @item.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
+        <% end %>
+
+        <p id="notice">
+            <p><%= flash[:notice] %></p>
+        </p>
+
+  </div>
+
   <h2 class="row mt-4 mb-4">商品新規登録</h2>
 
 
