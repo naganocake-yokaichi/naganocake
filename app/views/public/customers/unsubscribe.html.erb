@@ -1,0 +1,14 @@
+<div class = 'container'>
+  <div class = 'row mt-5'>
+    <div class ='col-md-5 mx-auto' >
+      <strong class = 'row mt-5 ml-5'>本当に退会しますか？</strong><br>
+      <p>退会すると、会員情報や</p>
+      <p>これまでの購入履歴が閲覧できなくなります。</p>
+      <p>退会する場合は、「退会する」をクリックしてください。</p>
+      <div class = 'row mt-5 ml-4'>
+        <%= link_to '退会しない', root_path, class: 'btn btn-primary mr-3'%>
+        <%= link_to '退会する', customers_withdraw_path, method: :patch,"data-confirm" => "本当に退会しますか？", class: 'btn btn-danger'  %>
+      </div>
+    </div>
+  </div>
+</div>
