@@ -42,6 +42,14 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     cart_items = current_customer.cart_items
     @order.save
+    cart_items.each do |cart|
+      order_detail = OrderDetail.new
+      order_detail.item_id = cart.item_id
+      order_detail.order_id = @order.id
+      order_detail.amount = cart.amount
+      order_detail.price = @order.total_payment
+      order_detail.save
+    end
     redirect_to orders_thanks_path
     # データを保存した後に、カートの中身を全て空にする。
     cart_items.destroy_all
@@ -51,7 +59,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @customer = current_customer
+    @orders = @customer.orders
+    @order_details = @customer.order_details.all
   end
 
   def show
