@@ -1,17 +1,12 @@
 <container>
-        <div class ="row my-2 ml-5 text-danger">
+      <div class ="row my-2 ml-5 text-danger">
         <% if @address.errors.any? %>
         <%= @address.errors.count %>件のエラーが発生しました。<br>
                 <% @address.errors.full_messages.each do |message| %>
                     <%= message %>
                 <% end %>
         <% end %>
-
-        <p id="notice">
-            <p><%= flash[:notice] %></p>
-        </p>
-
-        </div>
+      </div>
 
 
 　      <div class="row">
