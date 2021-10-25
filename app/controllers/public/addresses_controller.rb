@@ -6,10 +6,14 @@ class Public::AddressesController < ApplicationController
     end
 
     def create
-      address = Address.new(address_params)
-      address.customer_id = current_customer.id
-      address.save
-      redirect_to addresses_path
+      @address = Address.new(address_params)
+      @address.customer_id = current_customer.id
+      if @address.save
+        redirect_to addresses_path
+      else
+        @addresses = Address.all
+        render :index
+      end
     end
 
     def edit

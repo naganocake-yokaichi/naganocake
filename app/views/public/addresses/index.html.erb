@@ -1,6 +1,16 @@
 <container>
+        <div class ="row my-2 ml-5 text-danger">
+        <% if @address.errors.any? %>
+        <%= @address.errors.count %>件のエラーが発生しました
+                <% @address.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
+        <% end %>
+        </div>
+
+
 　      <div class="row">
-            <div class="col-md-12 my-5 ml-5">
+            <div class="col-md-12 my-2 ml-5">
             <h2>配送先登録/一覧</h2>
             </div>
         </div>
