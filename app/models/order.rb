@@ -1,6 +1,10 @@
 class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details
+  
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :postcode, presence: true
 
   # enumを定義する
   enum pay_method: { credit_card: 0, transfer: 1 }

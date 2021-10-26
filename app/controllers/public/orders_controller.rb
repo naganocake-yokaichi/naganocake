@@ -5,8 +5,7 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     # カートが空だった場合、カートアイテム一覧画面に戻す
     if @customer.cart_items.blank?
-      flash[:warning] = "カートが空です"
-      redirect_to cart_items_path
+      redirect_to cart_items_path, alert: 'カートが空です'
     else
     end
   end
@@ -21,7 +20,7 @@ class Public::OrdersController < ApplicationController
       @order.address = @customer.address
       @order.postcode = @customer.postcode
 
-    else params[:order][:address_option] == "2"
+    elsif params[:order][:address_option] == "2"
       @order.name = Address.find(params[:order][:registered]).name
       @order.address = Address.find(params[:order][:registered]).address
       @order.postcode = Address.find(params[:order][:registered]).postcode
@@ -60,7 +59,7 @@ class Public::OrdersController < ApplicationController
       # データを保存した後に、カートの中身を全て空にする。
       cart_items.destroy_all
     else
-      redirect_to new_order_path
+      redirect_to new_order_path, alert: 'お届け先情報が入っていません'
     end
   end
 
