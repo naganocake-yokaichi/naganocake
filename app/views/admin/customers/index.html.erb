@@ -1,45 +1,41 @@
 <div class = 'container'>
   <div class = 'row' >
     <div class = 'col-md-9'>
-<h3>会員一覧</h3>
-<table class = 'table'>
-  <thead>
-    <tr class= 'alert-secondary'>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
+      <h3>会員一覧</h3>
+      <table class = 'table'>
+        <thead>
+          <tr class= 'alert-secondary'>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td class = "info col-md-1" >
+            <%= customer.id %>
+            </td>
+            <td class = "info col-md-1"><%= link_to admin_customer_path(customer) do %>
+            <%= customer.last_name %>
+            <%= customer.first_name %>
+            </td>
+            <% end %>
+            <td class = "info col-md-1">
+            <%= customer.email %>
+            </td>
+            <td class = "info col-md-1">
+            <% if customer.is_deleted == true %><p class = 'text-secondary font-weight-bold'>退会</p>
+            <% elsif customer.is_deleted == false %><p class = 'text-success font-weight-bold'>有効</p>
+            <% end %>
 
-    </tr>
-  </thead>
-
-
-<tbody>
-<% @customers.each do |customer| %>
-<tr>
-  <td class = "info col-md-1" >
-  <%= customer.id %>
-  </td>
-  <td class = "info col-md-1"><%= link_to admin_customer_path(customer) do %>
-<%= customer.last_name %>
-
-<%= customer.first_name %>
-</td>
-<% end %>
-<td class = "info col-md-1">
-<%= customer.email %>
-</td>
-<td class = "info col-md-1">
-
-<% if customer.is_deleted == true %><p class = 'text-secondary font-weight-bold'>退会</p>
-<% elsif customer.is_deleted == false %><p class = 'text-success font-weight-bold'>有効</p>
-<% end %>
-
-<% end %>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+            <% end %>
+            <%= paginate @customers %>
+             </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
