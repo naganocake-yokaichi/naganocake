@@ -23,7 +23,7 @@ class Admin::CustomersController < ApplicationController
       redirect_to admin_customer_path
     else
       flash[:alert]= "会員情報の変更に失敗しました"
-      render edit
+      render :edit
     end
   end
 
