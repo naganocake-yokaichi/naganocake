@@ -55,3 +55,5 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem "enum_help"
+gem 'devise-i18n'
+gem 'devise-i18n-views'

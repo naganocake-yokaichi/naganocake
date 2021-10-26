@@ -10,10 +10,11 @@ end
 def update
   @customer = current_customer
    if @customer.update(customer_params)
-     flash[:success] = '会員登録情報を変更しました。'
+     flash[:notice] = '会員登録情報を変更しました。'
      redirect_to customers_path
 
 else
+  flash[:alert]= "会員情報の変更に失敗しました"
   render :edit
 end
 end
