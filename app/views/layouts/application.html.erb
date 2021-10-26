@@ -16,9 +16,11 @@
       <% else %>
         <%= render 'layouts/publicheader' %>
       <% end %>
-      <%= flash[:notice] %>
-      <%= flash[:alert] %>
+
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
     </header>
+
     <%= yield %>
   </body>
 </html>
