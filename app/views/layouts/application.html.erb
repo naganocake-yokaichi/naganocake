@@ -17,11 +17,9 @@
         <%= render 'layouts/publicheader' %>
       <% end %>
 
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
     </header>
-
-    <div class="text-danger">
-       <p><%= flash[:notice] %></p>
-    </div>
 
     <%= yield %>
   </body>

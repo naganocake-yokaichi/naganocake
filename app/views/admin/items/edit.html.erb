@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class ="row my-2 ml-5 text-danger">
+  <div class ="row my-2 ml-5">
         <% if @item.errors.any? %>
         <%= @item.errors.count %>件のエラーが発生しました。<br>
                 <% @item.errors.full_messages.each do |message| %>

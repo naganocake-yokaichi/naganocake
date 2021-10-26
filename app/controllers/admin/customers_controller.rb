@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).per(10)
   end
 
 
@@ -17,9 +17,10 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      flash[:success]= "会員情報を変更しました"
+      flash[:notice]= "会員情報を変更しました"
       redirect_to admin_customer_path
     else
+      flash[:alert]= "会員情報の変更に失敗しました"
       render edit
     end
   end
