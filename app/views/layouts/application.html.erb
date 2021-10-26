@@ -10,14 +10,17 @@
 
   <body>
     <header>
-      
+
       <% if admin_signed_in? %>
         <%= render 'layouts/adminheader' %>
       <% else %>
         <%= render 'layouts/publicheader' %>
       <% end %>
-      
+
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
     </header>
+
     <%= yield %>
   </body>
 </html>
