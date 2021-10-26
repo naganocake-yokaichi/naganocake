@@ -3,6 +3,12 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
+    # カートが空だった場合、カートアイテム一覧画面に戻す
+    if @customer.cart_items.blank?
+      flash[:warning] = "カートが空です"
+      redirect_to cart_items_path
+    else
+    end
   end
 
   def confirm
@@ -15,7 +21,7 @@ class Public::OrdersController < ApplicationController
       @order.address = @customer.address
       @order.postcode = @customer.postcode
 
-    elsif params[:order][:address_option] == "2"
+    else params[:order][:address_option] == "2"
       @order.name = Address.find(params[:order][:registered]).name
       @order.address = Address.find(params[:order][:registered]).address
       @order.postcode = Address.find(params[:order][:registered]).postcode
@@ -41,18 +47,21 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     cart_items = current_customer.cart_items
-    @order.save
-    cart_items.each do |cart|
-      order_detail = OrderDetail.new
-      order_detail.item_id = cart.item_id
-      order_detail.order_id = @order.id
-      order_detail.amount = cart.amount
-      order_detail.price = cart.item.price * 1.1
-      order_detail.save
+    if @order.save
+      cart_items.each do |cart|
+        order_detail = OrderDetail.new
+        order_detail.item_id = cart.item_id
+        order_detail.order_id = @order.id
+        order_detail.amount = cart.amount
+        order_detail.price = cart.item.price * 1.1
+        order_detail.save
+      end
+      redirect_to orders_thanks_path
+      # データを保存した後に、カートの中身を全て空にする。
+      cart_items.destroy_all
+    else
+      redirect_to new_order_path
     end
-    redirect_to orders_thanks_path
-    # データを保存した後に、カートの中身を全て空にする。
-    cart_items.destroy_all
   end
 
   def thanks
