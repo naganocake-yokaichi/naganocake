@@ -1,4 +1,6 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :authenticate_customer!,except: [:index,:show,:create,:new,:edit,:update]
   def index
     @items = Item.all
   end
