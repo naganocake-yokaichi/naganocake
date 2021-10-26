@@ -1,23 +1,47 @@
-<h2>注文履歴</h2>
+<div class="container">
 
-<% @orders.each do |order| %>
+  <h2 class="row mt-4 mb-4">注文履歴一覧</h2>
 
-  <p>注文日</p>
-  <%= order.created_at.strftime('%Y/%m/%d') %>
+  <table class="table table-striped ">
+    <thead>
+      <tr>
+        <td>注文日</td>
+        <td>配送先</td>
+        <td>注文商品</td>
+        <td>支払金額</td>
+        <td>ステータス</td>
+        <td>注文詳細</td>
+      </tr>
+    </thead>
 
-  <p>配送先</p>
-  <%= order.postcode %>
-  <%= order.address %>
-  <%= order.name %>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 
-  <p>注文商品</p>
+          <td>
+            <%= "〒#{order.postcode}" %></br>
+            <%= order.address %><br>
+            <%= order.name %>
+          </td>
 
-  <p>支払金額</p>
-  <%= order.total_payment %>
+          <td>
+            <% order.order_details.each do |order_detail| %>
+              <%= order_detail.item.name %></br>
+            <% end %>
+          </td>
 
-  <p>ステータス</p>
-  <%= order.status_i18n %>
+          <td><%= order.total_payment %></td>
 
-  <p>注文詳細</p>
+          <td><%= order.status_i18n %></td>
 
-<% end %>
+          <td>
+            <%= link_to "表示する", order_path(order), class: "btn btn-success" %>
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
