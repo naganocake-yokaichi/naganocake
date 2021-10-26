@@ -47,7 +47,7 @@ class Public::OrdersController < ApplicationController
       order_detail.item_id = cart.item_id
       order_detail.order_id = @order.id
       order_detail.amount = cart.amount
-      order_detail.price = @order.total_payment
+      order_detail.price = cart.item.price * 1.1
       order_detail.save
     end
     redirect_to orders_thanks_path
@@ -61,10 +61,13 @@ class Public::OrdersController < ApplicationController
   def index
     @customer = current_customer
     @orders = @customer.orders
-    @order_details = @customer.order_details.all
+
   end
 
   def show
+    @order = Order.find(params[:id])
+    # @order_details = OrderDetail.where(order_id: params[:id])
+    @order_details = @order.order_details
   end
 
 
