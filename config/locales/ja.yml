@@ -11,3 +11,10 @@ ja:
         make: "制作中"
         ready: "発送準備中"
         sent: "発送済み"
+
+    order_detail:
+      make_status:
+        impossible: "製作不可"
+        waiting: "製作待ち"
+        make: "制作中"
+        finish: "製作完了"

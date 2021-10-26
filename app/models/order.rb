@@ -4,5 +4,5 @@ class Order < ApplicationRecord
 
   # enumを定義する
   enum pay_method: { credit_card: 0, transfer: 1 }
-  enum status: { pay_waiting: 0, confirmation: 1, make: 2, readey: 3, sent: 4 }
+  enum status: { pay_waiting: 0, confirmation: 1, make: 2, ready: 3, sent: 4 }
 end
