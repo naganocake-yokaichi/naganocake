@@ -10,6 +10,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
+
+        <div class="mr-5 d-flex align-items-center text-light">ようこそ、<%= current_customer.last_name %>さん！</div>
+
         <li class="nav-item">
           <%= link_to "マイページ",  customers_path, class:"nav-link active" %>
         </li>
