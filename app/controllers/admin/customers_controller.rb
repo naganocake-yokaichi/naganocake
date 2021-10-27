@@ -1,4 +1,6 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :authenticate_customer!,except: [:index, :show,:edit,:update]
   def index
     @customers = Customer.page(params[:page]).per(10)
   end
@@ -21,7 +23,7 @@ class Admin::CustomersController < ApplicationController
       redirect_to admin_customer_path
     else
       flash[:alert]= "会員情報の変更に失敗しました"
-      render edit
+      render :edit
     end
   end
 
