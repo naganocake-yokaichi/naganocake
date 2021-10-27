@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div style="background-color:#4c1f02;">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Naganocake</a>
 
@@ -9,6 +10,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
+
+        <div class="mr-5 d-flex align-items-center text-light">ようこそ、<%= current_customer.last_name %>さん！</div>
+
         <li class="nav-item">
           <%= link_to "マイページ",  customers_path, class:"nav-link active" %>
         </li>
@@ -52,3 +56,4 @@
     </div>
   </div>
 </nav>
+</div>
