@@ -1,26 +1,93 @@
-# README
+# 概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DMM WEBCAMPのチーム開発課題として架空の洋菓子店のECサイト「NaganoCake」を作成しました。
 
-Things you may want to cover:
+## 機能一覧
 
-* Ruby version
+## [顧客]
 
-* System dependencies
+・ログイン機能　
 
-* Configuration
+・ログアウト機能　
 
-* Database creation
+・商品一覧表示機能
 
-* Database initialization
+・商品詳細表示機能
 
-* How to run the test suite
+・カート追加機能
 
-* Services (job queues, cache servers, search engines, etc.)
+・カート一覧機能
 
-* Deployment instructions
+・カート編集機能
 
-* ...
+・注文機能
 
-nagano
+・会員情報編集機能
+
+・退会機能
+
+・配送先追加・編集機能
+
+・注文履歴一覧表示機能
+
+・注文履歴詳細表示機能
+
+## [管理者]
+
+・ログイン機能
+
+・ログアウト機能
+
+・注文履歴一覧表示機能
+
+・注文履歴詳細表示機能
+
+・顧客一覧表示機能
+
+・顧客詳細表示機能
+
+・商品一覧表示機能
+
+・商品詳細表示機能
+
+・商品情報変更機能
+
+・ジャンル設定機能
+
+## 環境
+
+・開発環境 Cloud9
+
+・フレームワーク Ruby on Rails
+
+・バージョン　Rails 5.2.6
+
+## Gem
+
+・devise
+
+・refile
+
+・refile-mini_magick
+
+・kaminari,'~> 1.2.1'
+
+・bootstrap,'~> 4.5'
+
+・jquery-rails,'~> 5.13'
+
+・font-awesome-sass
+
+・enum_help
+
+
+## メンバー
+
+・ちっぷ
+
+・やはた
+
+・岡ちゃん
+
+・やまちゃん
+
