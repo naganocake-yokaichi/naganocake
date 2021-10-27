@@ -1,0 +1,34 @@
+<container>
+
+  <div class ="row mt-2 my-2 ml-5">
+        <% if @address.errors.any? %>
+        <%= @address.errors.count %>件のエラーが発生しました。<br>
+                <% @address.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
+        <% end %>
+  </div>
+
+　<div class="row">
+    <div class="col my-2 ml-5">
+      <h2>配送先編集<h2>
+    </div>
+  </div>
+    <div class="row ml-5">
+      <%= form_with model:@address, local:true do |f| %>
+
+        <h5>郵便番号（ハイフンなし）</h5>
+        <%= f.text_field :postcode %>
+
+        <h5>住所</h5>
+        <%= f.text_field :address %>
+
+        <h5>宛名</h5>
+        <%= f.text_field :name %>
+
+        <%= f.submit '変更内容を保存', class: "btn btn-success" %>
+
+        <% end %>
+
+    </div>
+</container>
