@@ -6,10 +6,16 @@ class Admin::OrdersController < ApplicationController
   end
   def update
     @order = Order.find(params[:id])
-    @order_detail = @order.order_details
+    @order_details = @order.order_details
     @order.update(order_params)
-    redirect_to admin_order_path(@order.id)
-
+    # _before_type_castはenumを使用している時に使える。条件で数値を選択したいときに使用。
+    # if @order.status == "confirmation"でも可
+    if @order.status_before_type_cast == 1
+      @order_details.update_all(make_status: 1)
+      redirect_to request.referer
+    else
+      redirect_to request.referer
+    end
   end
 
   private
