@@ -1,5 +1,15 @@
 <div class="container">
 
+  <div class ="row my-2 ml-5">
+        <% if @item.errors.any? %>
+        <%= @item.errors.count %>件のエラーが発生しました。<br>
+                <% @item.errors.full_messages.each do |message| %>
+                    <%= message %>
+                <% end %>
+        <% end %>
+
+  </div>
+
   <h2 class="row mt-4 mb-4">商品編集</h2>
 
 
